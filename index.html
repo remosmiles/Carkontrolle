@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carkontrolle Pro | Einsatztool</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo">🚔</div>
+                <h1>CarControl <span>v2.0</span></h1>
+            </div>
+
+            <form id="control-form">
+                <div class="form-section">
+                    <label>Herkunft</label>
+                    <select id="herkunft">
+                        <option value="CH">Schweiz (CH)</option>
+                        <option value="EU">EU-Staat</option>
+                        <option value="Drittstaat">Drittstaat</option>
+                    </select>
+                </div>
+
+                <div class="form-section">
+                    <label>Personen im Fahrzeug</label>
+                    <input type="number" id="personen-anzahl" value="0" min="0">
+                </div>
+
+                <div class="divider">Massnahmen & Anzeigen</div>
+
+                <div class="checkbox-group">
+                    <label class="custom-check">
+                        <input type="checkbox" id="stillgelegt">
+                        <span class="checkmark"></span> Fahrzeug stillgelegt
+                    </label>
+                    <label class="custom-check">
+                        <input type="checkbox" id="anzeige-tech">
+                        <span class="checkmark"></span> Anzeige Technisch
+                    </label>
+                    <label class="custom-check">
+                        <input type="checkbox" id="anzeige-recht">
+                        <span class="checkmark"></span> Anzeige Verkehrsrecht
+                    </label>
+                    <label class="custom-check">
+                        <input type="checkbox" id="busse">
+                        <span class="checkmark"></span> Ordnungsbusse
+                    </label>
+                </div>
+
+                <div class="form-section">
+                    <label>Festgestellte Mängel / Details</label>
+                    <textarea id="notizen" rows="4" placeholder="Spezifische Mängel hier eintragen..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Protokoll Speichern</button>
+                
+                <div class="secondary-actions">
+                    <button type="button" id="btn-export" class="btn-outline">💾 CSV Export</button>
+                    <button type="button" id="btn-reset" class="btn-danger-text">Daten zurücksetzen</button>
+                </div>
+            </form>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="status-indicator">● System Aktiv</div>
+                <div class="date-display" id="date-now">--.--.----</div>
+            </header>
+
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Kontrollen</span>
+                    <span class="stat-value" id="stat-total">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Personen</span>
+                    <span class="stat-value" id="stat-personen">0</span>
+                </div>
+                <div class="stat-card highlight-warning">
+                    <span class="stat-label">Anzeigen</span>
+                    <span class="stat-value" id="stat-anzeigen">0</span>
+                </div>
+                <div class="stat-card highlight-danger">
+                    <span class="stat-label">Stillgelegt</span>
+                    <span class="stat-value" id="stat-stillgelegt">0</span>
+                </div>
+            </div>
+
+            <section class="data-section">
+                <div class="card">
+                    <h3>Herkunftsstatistik</h3>
+                    <div class="origin-grid">
+                        <div class="origin-box"><span>CH</span><strong id="count-ch">0</strong></div>
+                        <div class="origin-box"><span>EU</span><strong id="count-eu">0</strong></div>
+                        <div class="origin-box"><span>DRITT</span><strong id="count-dritt">0</strong></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
